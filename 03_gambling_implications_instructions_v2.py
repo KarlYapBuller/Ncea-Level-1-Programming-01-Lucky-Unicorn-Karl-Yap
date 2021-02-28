@@ -40,3 +40,5 @@ if show_gambling_implications == "yes":
 
 else:
     gambling_implications_instructions()
+
+print("program continues")
