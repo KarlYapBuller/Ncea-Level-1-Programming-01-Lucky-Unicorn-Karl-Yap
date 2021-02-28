@@ -35,7 +35,8 @@ def gambling_implications_instructions():
 show_gambling_implications = gambling_implications("Do you undertand the implications of gambling?")
 
 #If user answers yes, ask user if they have played before is run
-if show_gambling_implications == "no":
-    gambling_implications_instructions()
+if show_gambling_implications == "yes":
+    print("Ask user if they have played before")
 
-print("Program continues")
+else:
+    gambling_implications_instructions()
