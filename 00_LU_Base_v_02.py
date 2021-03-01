@@ -18,7 +18,7 @@ def played_before(question):
 #Game information
 def game_information():
     print("*****Game information*****")
-    print()
+    print("Doctors without borders")
     print("Rules of the game")
     print()
     print()
