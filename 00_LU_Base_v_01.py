@@ -1,5 +1,6 @@
 #Functions
 
+#Gambling implications function
 def gambling_implications(question):
     valid = False
     while not valid:
@@ -30,7 +31,54 @@ def gambling_implications_instructions():
     print("the people around the gambler like their friends and family.")
     return""
 
-#Main Routine
+#Played before function
+def played_before(question):
+    valid = False
+    while not valid:
+        response = input(question).lower()
+
+        if response == "yes" or response == "y":
+            response = "yes"
+            return response
+
+        elif response == "no" or response == "n":
+            response = "no"
+            return response
+
+        else:
+            print("<error> please answer yes/no")
+#Game information function
+def game_information():
+    print("*****Game information*****")
+    print("Doctors without borders")
+    print("Rules of the game")
+    print()
+    print()
+    return""
+
+#Ask user how much they want to play for function
+def number_check(question, low, high):
+    error = "Please enter a whole number between 1 and 10\n"
+
+    valid = False
+    while not valid:
+        try:
+            #Ask the question
+            response = int(input(question))
+
+            #If the amount is to low/to high give
+            if low < response <= high:
+                return response
+
+            #Output an error
+            else:
+                print(error)
+
+        except ValueError:
+            print(error)
+
+#Main Routine goes here
+
 #Calls gambling implication functions
 show_gambling_implications = gambling_implications("Do you undertand the implications of gambling?")
 
@@ -41,4 +89,18 @@ if show_gambling_implications == "yes":
 else:
     gambling_implications_instructions()
 
+#Calls ask user if they have played before funtionand game information
+show_played_before = played_before("Have you played this game before?")
+
+if show_played_before == "no":
+    game_information()
+
 print("program continues")
+
+#Ask user how much they want to play with
+how_much = number_check("How much money would you like to play with? ", 0, 10)
+
+print("The amount you have chosen to spend is ${}".format(how_much))
+
+
+
