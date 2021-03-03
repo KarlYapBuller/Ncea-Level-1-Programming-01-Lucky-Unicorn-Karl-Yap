@@ -52,6 +52,7 @@ while play_again == "":
         print("Sorry you have run out of money")
     else:
         play_again = input("Press <Enter> to play again or 'xxx' to quit game")
+        print()
 
 print()
 print("Final balance", balance)
