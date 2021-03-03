@@ -4,15 +4,14 @@ balance = 5
 rounds_played = 0
 
 #.lower is used just in case user types in exit code, 'xxx' in uppercase
-play_again = input("Press <Enter> to play...").lower()
+play_again = input("Press <Enter> to play").lower()
 while play_again == "":
 
     #Increase #rounds played
     rounds_played += 1
 
     #Print number of rounds played
-    print()
-    print("*****Round #{}*****".format(rounds_played))
+    print("*****Round#{}*****".format(rounds_played))
     balance -= 1
     print("Balance: ", balance)
     print()
@@ -25,5 +24,5 @@ while play_again == "":
     else:
         play_again = input("Press <Enter> to play again or 'xxx' to quit game")
 
-    print()
-    print("Final balance", balance)
+print()
+print("Final balance", balance)
