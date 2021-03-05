@@ -51,7 +51,8 @@ def played_before(question):
             print("<error> please answer yes/no")
 #Game information function
 def game_information():
-    print("*****Game information*****")
+    statement_generator("Game information", "*")
+    print()
     print("This game was created to raise money for the charity Doctors without Borders")
     print("Doctors without Borders is an independant international medical")
     print("humanitarian orginisation that delivers emergency aid to")
@@ -116,11 +117,12 @@ def statement_generator(statement, decoration):
     return ""
 
 #Main Routine goes here
-#Welcomes user to the Lucky Unicorn game
+#Welcomes user to the Lucky Unicorn game, the statement is decorated
 statement_generator("Welcome to the Lucky Unicorn game", "*")
 print()
 
 #Calls gambling implication functions
+statement_generator("Gambling implications", "?")
 show_gambling_implications = gambling_implications("Do you undertand the implications of gambling?")
 
 #If user answers yes, ask user if they have played before is run
@@ -140,6 +142,9 @@ if show_played_before == "no":
     game_information()
 
 #Ask user how much they want to play with
+#How much money do you want to play with statement decorator
+print()
+statement_generator("Let us get started", "$")
 how_much = number_check("How much money would you like to play with? ", 0, 10)
 #Prints out amount user has chosen to play with
 print("The amount you have chosen to spend is ${}".format(how_much))
@@ -158,8 +163,9 @@ while play_again == "":
     rounds_played += 1
 
     #Print number of rounds played
+    #Rounds played statement decorator
     print()
-    print("*****Round#{}*****".format(rounds_played))
+    statement_generator("Round #{}".format(rounds_played), ".")
     print()
 
     chosen_number = random.randint(0,100)
@@ -196,20 +202,24 @@ while play_again == "":
 
     outcome = ("You got a {}. Your balance is ${:.2f} ".format(chosen,balance))
 
-    #Statement decorator
+    #Token/prize statement decorator
     statement_generator(outcome, prize_decoration)
 
 #If balance is less than one program displays sorry you have run out of money
 #User can choose if they want to continue the game or quit the game
+#Sorry you have run out of money statement decorator
     if balance < 1:
         play_again = "xxx"
-        print("Sorry you have run out of money")
+        print()
+        statement_generator("Sorry you have run out of money", "^")
     else:
         play_again = input("Press <Enter> to play again or 'xxx' to quit game")
         print()
-
+#Results statement decorator, final balance and thanks the user for playing Lucky Unicorn
 print()
+statement_generator("Results", "-")
 print("Final balance ${:.2f}".format(balance))
+print("Thank you for playing Lucky Unicorn")
 
 
 
