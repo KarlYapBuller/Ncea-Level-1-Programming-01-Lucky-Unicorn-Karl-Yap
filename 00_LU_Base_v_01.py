@@ -5,7 +5,10 @@ import random
 
 #Functions
 
-#Gambling implications function
+#Gambling implications function, question asks the user if they understand the implications of gambling?
+#If the user answers yes, program continues to the user if they have played before?
+#If user answers no, gambling implications will display
+#If user answers anyything other than yes/no, <error> please answer yes/no will appear
 def gambling_implications(question):
     valid = False
     while not valid:
@@ -21,7 +24,8 @@ def gambling_implications(question):
 #If user response is anything other than yes or no,user will be asked to answer yes or no.
         else:
             print("<error> please answer yes/no")
-#gambling implication instructions, this will appear if user answers no to if they understand gambling implications.
+#gambling implication instructions, details to the user of the implications gambling has to the and society
+#this will appear if user answers no to if they understand gambling implications.
 def gambling_implications_instructions():
     print()
     print("Harm from gambling is not solely just losing money.")
@@ -38,24 +42,29 @@ def gambling_implications_instructions():
     return""
 
 #Played before function, output depends on what the user answers
+#If the user answers yes, program continues to ask the user how much they want to play with
+#If user answers no, game information will display
+#If user answers anything other than yes/no, <error> please answer yes/no will appear
 def played_before(question):
     valid = False
     while not valid:
         response = input(question).lower()
-
+#If user response is either 'yes' or 'y' the response will be outputed as yes.
         if response == "yes" or response == "y":
             response = "yes"
             return response
-
+#If user response is either 'no' or 'n' the response will be outputed as no.
         elif response == "no" or response == "n":
             response = "no"
             return response
-
+#If user response is anything other than yes or no,user will be asked to answer yes or no.
         else:
             print("<error> please answer yes/no")
 
-#Game information function, Game information will
-#display if user answers they have not played this game before
+#Game information function,
+#Game information tells the user why the game is made (Doctors without Borders charity)
+#Game rules and instructions
+#This is displayed if user answers no, they have not played this game before
 def game_information():
     statement_generator("Game information", "*")
     print()
@@ -88,6 +97,10 @@ def game_information():
     return""
 
 #Ask user how much they want to play for function
+#Question is how much money do you want to play with
+#User can only input a whole number betweeen 1 and 10
+#If user does not enter a whole number between 1 and 10 error message is
+#displayed telling the user to enter a whole numbe between 1 and 10
 def number_check(question, low, high):
     error = "Please enter a whole number between 1 and 10\n"
 
@@ -109,6 +122,7 @@ def number_check(question, low, high):
             print(error)
 
 #Statement generator
+#Decorates the statements in the Lucky Unicorn game
 def statement_generator(statement, decoration):
 
     sides = decoration * 3
@@ -123,27 +137,36 @@ def statement_generator(statement, decoration):
     return ""
 
 #Main Routine goes here
-#Welcomes user to the Lucky Unicorn game, the statement is decorated
+#Welcomes user to the Lucky Unicorn game, the
+#"Welcome to the Lucky Unicorn game" statement is decorated
 statement_generator("Welcome to the Lucky Unicorn game", "*")
 print()
 
-#Calls gambling implication functions
+#The "Gambling implications" statement is decorated
 statement_generator("Gambling implications", "?")
+#Calls gambling implication functions
 #Gambling implications instructions/information
+#Gambling implications question
 gambling_implications_instructions()
 print()
 show_gambling_implications = gambling_implications("Do you understand the implications of gambling?")
 print()
 
-#If user answers yes, program continues
-#If user answers no, show gambling implications instructions and ask question again
+#If user answers yes, program continues to ask user if they have played before?
+#If user answers no, show gambling implications instructions and
+#question is asked again until user answers yes
+#If user answers anythoing other than yes/no <error> message is outputed
 while show_gambling_implications == "no":
     gambling_implications_instructions()
     print()
     show_gambling_implications = gambling_implications("Do you understand the implications of gambling?")
     print()
 
-#Calls ask user if they have played before funtionand game information
+#Calls ask user if they have played before funtion and game information function
+#Played before statement is decorated
+#If the user answers yes, program continues to ask the user how much they want to play with
+#If user answers no, game information will display
+#If user answers anything other than yes/no, <error> please answer yes/no will appear
 print()
 statement_generator("Played before", "?")
 show_played_before = played_before("Have you played this game before?")
@@ -154,7 +177,12 @@ if show_played_before == "no":
     game_information()
 
 #Ask user how much they want to play with
-#How much money do you want to play with statement decorator
+#How much money do you want to play with statement is decorated
+#User can only input a whole number between 1 and 10
+#If user does not input a whole number between 1 and 10,
+#<error> message will be outputed and user will be asked to input a whole number between 1 and 10
+#Once user has inputed a correct value the amount the user has chosen to spend,
+#will be outputed and displayed to the user
 print()
 statement_generator("Let us get started", "$")
 how_much = number_check("How much money would you like to play with? ", 0, 10)
@@ -163,15 +191,19 @@ print("The amount you have chosen to spend is ${}".format(how_much))
 print()
 
 #Round looping
+#User balance depends on how much the user has chosen to spend in the Lucky Unicorn game
 balance = how_much
 
 rounds_played = 0
 
 #.lower is used just in case user types in exit code, 'xxx' in uppercase
+#User presses <Enter to play and continue playing
+#User inputs 'xxx' to quit the game
 play_again = input("Press <Enter> to play").lower()
 while play_again == "":
 
-    #Increase #rounds played
+    #Increase rounds played by 1 each time user presses <Enter>
+    #rounds played
     rounds_played += 1
 
     #Print number of rounds played
@@ -179,7 +211,8 @@ while play_again == "":
     print()
     statement_generator("Round #{}".format(rounds_played), ".")
     print()
-
+    #Chosees a random number between 1 and 10 and depending on that
+    #number is the token the user will get
     chosen_number = random.randint(0,100)
 
     #Adjust balance of user
@@ -227,7 +260,7 @@ while play_again == "":
     else:
         play_again = input("Press <Enter> to play again or 'xxx' to quit game")
         print()
-#Results statement decorator, final balance and thanks the user for playing Lucky Unicorn
+#Results statement is decorated, users final balance and thanks the user for playing Lucky Unicorn
 print()
 statement_generator("Results", "-")
 print("Final balance ${:.2f}".format(balance))
