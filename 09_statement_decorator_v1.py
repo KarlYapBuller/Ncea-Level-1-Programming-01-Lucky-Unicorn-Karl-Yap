@@ -1,4 +1,3 @@
-
 def statement_generator(statement, decoration):
 
     sides = decoration * 3
@@ -13,10 +12,9 @@ def statement_generator(statement, decoration):
     return ""
 
 #Main routine goes here
-statement_generator("Welcome to the Lucky Unicorn game", "*")
+statement_generator("Welcome to the Lucky Unicorn game","*")
 print()
 statement_generator("Congradulations you got a Unicorn", "!")
-
 
 
 
