@@ -14,7 +14,10 @@ def gambling_implications(question):
             return response
 #If user response is anything other than yes or no,user will be asked to answer yes or no.
         else:
+            print()
             print("<error> please answer yes/no")
+            print()
+
 #gambling implication instructions, this will appear if user answers no to if they understand gambling implications.
 def gambling_implications_instructions():
     print("*****Gambling Implications*****")
