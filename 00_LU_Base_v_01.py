@@ -1,3 +1,6 @@
+#Working Luck Unicorn game
+
+#Imports random number for odds of getting a specific token
 import random
 
 #Functions
@@ -20,20 +23,21 @@ def gambling_implications(question):
             print("<error> please answer yes/no")
 #gambling implication instructions, this will appear if user answers no to if they understand gambling implications.
 def gambling_implications_instructions():
-    print("*****Gambling Implications*****")
-    print("Harm from gambling is not solely just losing money")
-    print("Gambling can affect affect many aspects of a person's life such as")
+    print()
+    print("Harm from gambling is not solely just losing money.")
+    print("Gambling can affect affect many aspects of a person's life, such as")
     print("self-esteem, relationships, mental health and social life.")
-    print("Gambling can cause extreme emotions and mood swings,")
-    print("feeling that gambling is the only thing you can")
-    print("enjoy;you can find other thing that are not gambling boring,")
-    print("difficulty sleeping,have suicidal thoughts and")
-    print("feel depressed or anxious.")
+    print("Gambling can cause extreme emotions, mood swings,")
+    print("difficulty sleeping,suicidal thoughts,")
+    print("depression or anxiousness.")
+    print("Gamblers can often have the feeling ")
+    print("that gambling is the only thing they can")
+    print("enjoy;they can find other things that are not gambling boring,")
     print("Gambling does not only affect the gambler, but it can also affect ")
     print("the people around the gambler like their friends and family.")
     return""
 
-#Played before function
+#Played before function, output depends on what the user answers
 def played_before(question):
     valid = False
     while not valid:
@@ -49,15 +53,17 @@ def played_before(question):
 
         else:
             print("<error> please answer yes/no")
-#Game information function
+
+#Game information function, Game information will
+#display if user answers they have not played this game before
 def game_information():
     statement_generator("Game information", "*")
     print()
-    print("This game was created to raise money for the charity Doctors without Borders")
+    print("This game was created to raise money for the charity Doctors without Borders.")
     print("Doctors without Borders is an independant international medical")
     print("humanitarian orginisation that delivers emergency aid to")
     print("people affected by armed conflict, epidemics,")
-    print("healthcare care exclusion and natural or man-made disasters")
+    print("healthcare care exclusion and natural or man-made disasters.")
     print()
     print("*****Rules of the game*****")
     print("Choose a starting amount (minimum $1, maximum $10).")
@@ -107,7 +113,7 @@ def statement_generator(statement, decoration):
 
     sides = decoration * 3
 
-    statement = "{} {} {}".format(sides, statement, sides)
+    statement = "{} {} {}".format(sides , statement, sides)
     top_bottom = decoration * len(statement)
 
     print(top_bottom)
@@ -123,17 +129,23 @@ print()
 
 #Calls gambling implication functions
 statement_generator("Gambling implications", "?")
-show_gambling_implications = gambling_implications("Do you undertand the implications of gambling?")
+#Gambling implications instructions/information
+gambling_implications_instructions()
+print()
+show_gambling_implications = gambling_implications("Do you understand the implications of gambling?")
+print()
 
-#If user answers yes, ask user if they have played before is run
-if show_gambling_implications == "yes":
-    print()
-
-else:
-    print()
+#If user answers yes, program continues
+#If user answers no, show gambling implications instructions and ask question again
+while show_gambling_implications == "no":
     gambling_implications_instructions()
+    print()
+    show_gambling_implications = gambling_implications("Do you understand the implications of gambling?")
+    print()
 
 #Calls ask user if they have played before funtionand game information
+print()
+statement_generator("Played before", "?")
 show_played_before = played_before("Have you played this game before?")
 print()
 
@@ -219,7 +231,14 @@ while play_again == "":
 print()
 statement_generator("Results", "-")
 print("Final balance ${:.2f}".format(balance))
-print("Thank you for playing Lucky Unicorn")
+print()
+print("Thank you for playing Lucky Unicorn.")
+print("Your money spent is for a good cause.")
+print("You helped contribute to the charity, Doctors without Borders.")
+print("Spread the word about this game and charity.")
+print("Tell your friends, family and anyone you")
+print("know, so we can help support the brave Doctors.")
+print("We hope you will play again. ")
 
 
 
